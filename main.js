@@ -29,22 +29,14 @@ function getLocation() {
         document.getElementById('info').innerText = "Geolocation is not supported by this browser.";
     });
 }
-function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-function setCookie(cname, cvalue) { document.cookie = cname + "=" + cvalue };
 var mapstyle = ''
 function setDefaultTheme(mode) { setCookie(DefaultTheme, mode)}
 function applyTheme(mode) {
     if (mode == 'dark') {
         mapstyle = 'mapbox://styles/mapbox/dark-v10';
-        document.body.style.color = "white"
+        document.body.style.color = '#cccccc';
     } else if (mode == 'light') {
         mapstyle = 'mapbox://styles/mapbox/light-v10';
-        document.body.style.color = "black"
-    } else {
-        setCookie(DefaultTheme, 'dark')
+        document.body.style.color = '#333333';
     }
 }
