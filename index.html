@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
-        <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
         <link rel="stylesheet" type="text/css" href="main.css">
         <script src="main.js"></script>
         <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
     </head>
     <div id="map"></div>
@@ -19,9 +19,10 @@
             <h2><span class="iconify" data-icon="mdi-chevron-down"></span><span id="mintemp"></span>°C · <span id="temp"></span>°C · <span id="maxtemp"></span>°C<span class="iconify" data-icon="mdi-chevron-up"></span></h2>
             <h3><span class="iconify" data-icon="mdi-water-percent"></span> <span id="humidity"></span>% · <span class="iconify" data-icon="mdi-weather-windy"></span> <span id="windspeed"></span> km/h</h2>
         </center></div>
-        <script>applyTheme('dark');getLocation()</script>
     </body>
     <div class ="footer">
-        <h6>© 2021 BlackDragon · Made with mapbox and OpenWeatherMap · Version 0.1.1</h6>
+        <button type="button" onclick="applyTheme();"><span id="themeicon"></span></button> 
+        <h6>© 2021 BlackDragon · Made with mapbox and OpenWeatherMap · Version 0.1.2</h6>
     </div>
+    <script>applyTheme()</script>
 </html>

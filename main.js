@@ -29,14 +29,21 @@ function getLocation() {
         document.getElementById('info').innerText = "Geolocation is not supported by this browser.";
     });
 }
-var mapstyle = ''
-function setDefaultTheme(mode) { setCookie(DefaultTheme, mode)}
-function applyTheme(mode) {
-    if (mode == 'dark') {
+var mapstyle = '';
+var currentmode = 'light';
+function applyTheme() {
+    if (currentmode == 'light') {
         mapstyle = 'mapbox://styles/mapbox/dark-v10';
         document.body.style.color = '#cccccc';
-    } else if (mode == 'light') {
+        document.body.style.backgroundColor = 'White';
+        document.getElementById('themeicon').innerHTML = '<h3><span class="iconify" data-icon="mdi-weather-night" style="color: #cccccc"></span></h3>';
+        currentmode = 'dark';
+    } else if (currentmode == 'dark') {
         mapstyle = 'mapbox://styles/mapbox/light-v10';
         document.body.style.color = '#333333';
-    }
-}
+        document.body.style.backgroundColor = 'Black';
+        document.getElementById('themeicon').innerHTML = '<h3><span class="iconify" data-icon="mdi-weather-sunny" style="color: #333333"></span></h3>';
+        currentmode = 'light';
+    };
+    getLocation()
+};

@@ -13,6 +13,7 @@ html {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    z-index: 2;
 }
 .footer {
     position: fixed;
@@ -21,6 +22,7 @@ html {
     width: 100%;
     text-align: center;
     font-family: 'Segoe UI';
+    z-index: 2;
 }
 .icon {
     font-size: 220px;
@@ -38,8 +40,12 @@ h3 {
     font-size: 28px;
     margin: 0px;
 }
-#map { position: absolute; top: 0; bottom: -25px; left: 0; right: 0; width: 100%}
-#gradient {   
-    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
-    z-index: 100;
+#map { position: absolute; top: 0; bottom: -25px; left: 0; right: 0; width: 100%; z-index: 1;}
+button {    
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
 }
