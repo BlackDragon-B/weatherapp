@@ -8,6 +8,7 @@
         <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <div id="map"></div>
     <body>
@@ -16,13 +17,13 @@
             <div class="icon"><span id="mainIcon"></span></div>
             <h1><span id="loc"></span></h1>
             <h1><span id="wStatus"></span></h1>
-            <h2><span class="iconify" data-icon="mdi-chevron-down"></span><span id="mintemp"></span>°C · <span id="temp"></span>°C · <span id="maxtemp"></span>°C<span class="iconify" data-icon="mdi-chevron-up"></span></h2>
+            <h2><span class="iconify" data-icon="mdi-chevron-down"></span><span id="mintemp"></span> · <span id="temp"></span> · <span id="maxtemp"></span><span class="iconify" data-icon="mdi-chevron-up"></span></h2>
             <h3><span class="iconify" data-icon="mdi-water-percent"></span> <span id="humidity"></span>% · <span class="iconify" data-icon="mdi-weather-windy"></span> <span id="windspeed"></span> km/h</h2>
         </center></div>
     </body>
     <div class ="footer">
-        <button type="button" onclick="applyTheme();"><span id="themeicon"></span></button> 
+        <button type="button" onclick="applyTheme();"><span id="themeicon"></span></button> <button type="button" onclick="toggleMetric();"><span id="metricicon"></span></button> 
         <h6>© 2021 BlackDragon · Made with mapbox and OpenWeatherMap · Version <%= version %></h6>
+        <script>getLocation();</script>
     </div>
-    <script>getLocation()</script>
 </html>
