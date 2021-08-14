@@ -52,16 +52,8 @@ function getIcon(owmIcon) {
             return '<span class="iconify" data-icon="mdi-help-circle-outline"></span>';
     }
 };
-var lat = 0;
-var lon = 0;
-function getLocation() {
-    navigator.geolocation.getCurrentPosition((position) => {
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
-    }, () => {
-        document.getElementById('info').innerText = "Geolocation is not supported by this browser.";
-    });
-}
+var lat
+var lon
 // Begin of Map loading and other stuff
 function loadAssets() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhY2tkcmFnb24tYiIsImEiOiJja3NibjEzczkwOGR4Mndwazg4NjloNGx0In0.WrmQ8KgAT95audjoWuAXug'; // Haha, URL restriction go brr.
@@ -106,4 +98,12 @@ function applyTheme() {
     };
     loadAssets();
 };
-getLocation();
+function getLocation() {
+    navigator.geolocation.getCurrentPosition((position) => {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        applyTheme()
+    }, () => {
+        document.getElementById('info').innerText = "Geolocation is not supported by this browser.";
+    });
+}
