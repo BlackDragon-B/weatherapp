@@ -13,7 +13,7 @@
     <body>
         <div class="center"><center>
             <span id="info"></span>
-            <div class="icon"><span class="iconify" data-icon="mdi-cloud-outline"></span></div>
+            <div class="icon"><span id="mainIcon"></span></div>
             <h1><span id="loc"></span></h1>
             <h1><span id="wStatus"></span></h1>
             <h2><span class="iconify" data-icon="mdi-chevron-down"></span><span id="mintemp"></span>°C · <span id="temp"></span>°C · <span id="maxtemp"></span>°C<span class="iconify" data-icon="mdi-chevron-up"></span></h2>
@@ -22,7 +22,7 @@
     </body>
     <div class ="footer">
         <button type="button" onclick="applyTheme();"><span id="themeicon"></span></button> 
-        <h6>© 2021 BlackDragon · Made with mapbox and OpenWeatherMap · Version 0.1.2</h6>
+        <h6>© 2021 BlackDragon · Made with mapbox and OpenWeatherMap · Version <%= version %></h6>
     </div>
     <script>applyTheme()</script>
 </html>

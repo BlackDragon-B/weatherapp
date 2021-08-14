@@ -1,10 +1,62 @@
+function getIcon(owmIcon) {
+    switch (owmIcon) {
+        case "01d":
+            return '<span class="iconify" data-icon="mdi-weather-sunny"></span>';
+
+        case "01n":
+            return '<span class="iconify" data-icon="mdi-weather-sunny"></span>';
+
+        case "02d":
+            return '<span class="iconify" data-icon="mdi-weather-partly-cloudy"></span>';
+
+        case "02n":
+            return '<span class="iconify" data-icon="mdi-weather-partly-cloudy"></span>';
+
+        case "03d":
+            return '<span class="iconify" data-icon="mdi-weather-cloudy"></span>';
+
+        case "03n":
+            return '<span class="iconify" data-icon="mdi-weather-cloudy"></span>';
+
+        case "04d":
+            return '<span class="iconify" data-icon="mdi-weather-cloudy"></span>';
+
+        case "04n":
+            return '<span class="iconify" data-icon="mdi-weather-cloudy"></span>';
+
+        case "09d":
+            return '<span class="iconify" data-icon="mdi-weather-pouring"></span>';
+
+        case "09n":
+            return '<span class="iconify" data-icon="mdi-weather-pouring"></span>';
+
+        case "10d":
+            return '<span class="iconify" data-icon="mdi-weather-partly-rainy"></span>';
+
+        case "10n":
+            return '<span class="iconify" data-icon="mdi-weather-partly-rainy"></span>';
+
+        case "11d":
+            return '<span class="iconify" data-icon="mdi-weather-lightning"></span>';
+
+        case "11n":
+            return '<span class="iconify" data-icon="mdi-weather-lightning"></span>';
+
+        case "13d":
+            return '<span class="iconify" data-icon="mdi-snowflake"></span>';
+
+        case "13n":
+            return '<span class="iconify" data-icon="mdi-snowflake"></span>';
+
+        default:
+            return '<span class="iconify" data-icon="mdi-help-circle-outline"></span>';
+    }
+};
 function getLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
-        var apikey = "5f19b84eacf27e8587657d0156c4cae5"; // Apikey for openweathermap
-        //mapboxgl
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhY2tkcmFnb24tYiIsImEiOiJja3NhZTU0NTYyNXBkMm5waGhmaHdlbm9jIn0.a1oLMiTjKEHObnA9yGyuAw';
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhY2tkcmFnb24tYiIsImEiOiJja3NibjEzczkwOGR4Mndwazg4NjloNGx0In0.WrmQ8KgAT95audjoWuAXug'; // Haha, URL restriction go brr.
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: mapstyle, // style URL
@@ -13,7 +65,7 @@ function getLocation() {
             interactive: false
         });
         //openweathermap
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}`, {})
+        fetch(`/getWeather/${lat}/${lon}`, {})
             .then(res => res.json())
             .then(data => {
                 document.getElementById('wStatus').innerText = data.weather[0].main;
@@ -23,6 +75,7 @@ function getLocation() {
                 document.getElementById('humidity').innerText = data.main.humidity;  
                 document.getElementById('loc').innerText = `${data.name}, ${data.sys.country}`;
                 document.getElementById('windspeed').innerText = data.wind.speed;
+                document.getElementById('mainIcon').innerHTML = getIcon(data.weather[0].icon);
             })
             .catch(error => console.error(error));
     }, () => {
