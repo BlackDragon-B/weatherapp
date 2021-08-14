@@ -56,7 +56,7 @@ var lat
 var lon
 var MetricFormula
 // Begin of Map loading and other stuff
-function loadAssets() {
+function loadMap() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhY2tkcmFnb24tYiIsImEiOiJja3NibjEzczkwOGR4Mndwazg4NjloNGx0In0.WrmQ8KgAT95audjoWuAXug'; // Haha, URL restriction go brr.
     const map = new mapboxgl.Map({
         container: 'map', // container ID
@@ -65,6 +65,9 @@ function loadAssets() {
         zoom: 15, // starting zoom
         interactive: false
     });
+    loadAssets()
+};
+function loadAssets() {
     //openweathermap
     fetch(`/getWeather/${lat}/${lon}`, {})
         .then(res => res.json())
@@ -100,7 +103,7 @@ function setTheme(mode) {
         document.getElementById('themeicon').innerHTML = '<h3><span class="iconify" data-icon="mdi-weather-sunny" style="color: #333333"></span></h3>';
         document.getElementById('metricicon').innerHTML = '<h3><span class="iconify" data-icon="mdi-thermometer" style="color: #333333"></span></h3>';
     };
-    loadAssets();
+    loadMap();
 };
 function applyTheme() {
     if (currentmode == 'light') {
