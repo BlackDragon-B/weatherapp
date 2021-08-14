@@ -52,36 +52,42 @@ function getIcon(owmIcon) {
             return '<span class="iconify" data-icon="mdi-help-circle-outline"></span>';
     }
 };
+var lat = 0;
+var lon = 0;
 function getLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhY2tkcmFnb24tYiIsImEiOiJja3NibjEzczkwOGR4Mndwazg4NjloNGx0In0.WrmQ8KgAT95audjoWuAXug'; // Haha, URL restriction go brr.
-        const map = new mapboxgl.Map({
-            container: 'map', // container ID
-            style: mapstyle, // style URL
-            center: [lon, lat], // starting position [lng, lat]
-            zoom: 15, // starting zoom
-            interactive: false
-        });
-        //openweathermap
-        fetch(`/getWeather/${lat}/${lon}`, {})
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('wStatus').innerText = data.weather[0].main;
-                document.getElementById('mintemp').innerText = Math.floor(data.main.temp_min - 273);
-                document.getElementById('temp').innerText = Math.floor(data.main.temp - 273);
-                document.getElementById('maxtemp').innerText = Math.floor(data.main.temp_max - 273);
-                document.getElementById('humidity').innerText = data.main.humidity;  
-                document.getElementById('loc').innerText = `${data.name}, ${data.sys.country}`;
-                document.getElementById('windspeed').innerText = data.wind.speed;
-                document.getElementById('mainIcon').innerHTML = getIcon(data.weather[0].icon);
-            })
-            .catch(error => console.error(error));
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
     }, () => {
         document.getElementById('info').innerText = "Geolocation is not supported by this browser.";
     });
 }
+// Begin of Map loading and other stuff
+function loadAssets() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhY2tkcmFnb24tYiIsImEiOiJja3NibjEzczkwOGR4Mndwazg4NjloNGx0In0.WrmQ8KgAT95audjoWuAXug'; // Haha, URL restriction go brr.
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: mapstyle, // style URL
+        center: [lon, lat], // starting position [lng, lat]
+        zoom: 15, // starting zoom
+        interactive: false
+    });
+    //openweathermap
+    fetch(`/getWeather/${lat}/${lon}`, {})
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('wStatus').innerText = data.weather[0].main;
+            document.getElementById('mintemp').innerText = Math.floor(data.main.temp_min - 273);
+            document.getElementById('temp').innerText = Math.floor(data.main.temp - 273);
+            document.getElementById('maxtemp').innerText = Math.floor(data.main.temp_max - 273);
+            document.getElementById('humidity').innerText = data.main.humidity;  
+            document.getElementById('loc').innerText = `${data.name}, ${data.sys.country}`;
+            document.getElementById('windspeed').innerText = data.wind.speed;
+            document.getElementById('mainIcon').innerHTML = getIcon(data.weather[0].icon);
+        })
+        .catch(error => console.error(error));
+};
+// End of Map loading and other stuff
 var mapstyle = '';
 var currentmode = 'light';
 function applyTheme() {
@@ -98,5 +104,6 @@ function applyTheme() {
         document.getElementById('themeicon').innerHTML = '<h3><span class="iconify" data-icon="mdi-weather-sunny" style="color: #333333"></span></h3>';
         currentmode = 'light';
     };
-    getLocation()
+    loadAssets();
 };
+getLocation();

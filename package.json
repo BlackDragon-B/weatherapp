@@ -1,6 +1,6 @@
 {
   "name": "weatherapp",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Weather App (Working Title)",
   "main": "index.js",
   "scripts": {
