@@ -24,29 +24,11 @@ app.get('/', function (req, res) {
 app.get('/getWeather/:lat/:lon', (req, res, next) =>{
     var lat = req.params.lat
     var lon = req.params.lon
-    var apikey = '774f44267a00519638b6374c17a580cf'
+    var apikey = process.env.apikey;
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}`, {})
         .then(res => res.json())
         .then(data => {
             res.send(data);
         })
         .catch(error => console.error(error));
-});
-
-app.get('/getMap/:lat/:lon/:theme/:resw/:resh', (req, res, next) =>{
-    var lat = req.params.lat
-    var lon = req.params.lon
-    var theme = req.params.theme
-    var resw = req.params.resw
-    var resh = req.params.resh
-    var map
-    var apikey = process.env.apikey;
-    switch (theme) {
-        case ('dark'):
-            map = 'dark-v10';
-        case ('light'):
-            map = 'light-v10';
-    };
-    res.write(`<img src='https://api.mapbox.com/styles/v1/mapbox/${map}/static/${lon},${lat},15,0/${resw}x${resh}?access_token=${apikey}'/>`);
-    res.send();
 });

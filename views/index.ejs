@@ -4,26 +4,26 @@
         <meta charset="UTF-8">
         <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
         <link rel="stylesheet" type="text/css" href="main.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <script src="main.js"></script>
         <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <div id="map"></div>
     <body>
         <div class="center"><center>
             <span id="info"></span>
-            <div class="icon"><span id="mainIcon"></span></div>
+            <div class="icon"><span id="mainIcon"><span class="iconify" data-icon="mdi-help-circle-outline"></span></span></div>
             <h1><span id="loc"></span></h1>
             <h1><span id="wStatus"></span></h1>
             <h2><span class="iconify" data-icon="mdi-chevron-down"></span><span id="mintemp"></span> · <span id="temp"></span> · <span id="maxtemp"></span><span class="iconify" data-icon="mdi-chevron-up"></span></h2>
             <h3><span class="iconify" data-icon="mdi-water-percent"></span> <span id="humidity"></span>% · <span class="iconify" data-icon="mdi-weather-windy"></span> <span id="windspeed"></span> km/h</h2>
         </center></div>
+        <div class ="footer">
+            <button type="button" onclick="applyTheme();"><span id="themeicon"></span></button> <button type="button" onclick="toggleMetric();"><span id="metricicon"></span></button> 
+            <h6>© 2021 BlackDragon · Version <%= version %></h6>
+            <script>getLocation();</script>
+        </div>
     </body>
-    <div class ="footer">
-        <button type="button" onclick="applyTheme();"><span id="themeicon"></span></button> <button type="button" onclick="toggleMetric();"><span id="metricicon"></span></button> 
-        <h6>© 2021 BlackDragon · Made with mapbox and OpenWeatherMap · Version <%= version %></h6>
-        <script>getLocation();</script>
-    </div>
 </html>
