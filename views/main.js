@@ -117,7 +117,7 @@ function setTheme(mode) {
         document.body.style.color = '#cccccc';
         buttoncolor = '#cccccc';
         currentmode = 'dark';
-        document.body.style.backgroundColor = 'White';
+        document.body.style.backgroundColor = '#343332';
         document.getElementById('themeicon').innerHTML = '<h3><span class="iconify" data-icon="mdi-weather-night" style="color: #cccccc"></span></h3>';
         document.getElementById('metricicon').innerHTML = '<h3><span class="iconify" data-icon="mdi-thermometer" style="color: #cccccc"></span></h3>';      
     } else if (mode == 'light') {  
@@ -125,11 +125,11 @@ function setTheme(mode) {
         document.body.style.color = '#333333';
         buttoncolor = '#333333';
         currentmode = 'light';
-        document.body.style.backgroundColor = 'Black';
+        document.body.style.backgroundColor = '#F6F6F4';
         document.getElementById('themeicon').innerHTML = '<h3><span class="iconify" data-icon="mdi-weather-sunny" style="color: #333333"></span></h3>';
         document.getElementById('metricicon').innerHTML = '<h3><span class="iconify" data-icon="mdi-thermometer" style="color: #333333"></span></h3>';    
     };
-    loadMap();
+    if (lat && lon ) {loadMap()};
 };
 function applyTheme() {
     if (currentmode == 'light') {
@@ -152,7 +152,7 @@ function toggleMetric() {
         currentMetric = 'celsius';
         setCookie("DefaultMetric","celsius");
     };   
-    loadAssets();
+    if (lat && lon ) {loadAssets()};
 };
 function calculateMetric(numb) {
     if (currentMetric == 'kelvin') {
@@ -169,6 +169,7 @@ function getLocation() {
         lon = position.coords.longitude;
         setTheme(getCookie("DefaultTheme"));
     }, () => {
-        document.getElementById('info').innerText = "Geolocation is not supported by this browser.";
+        document.getElementById("overlay").style.display = "block";
+        setTheme(getCookie("DefaultTheme"));
     });
 }

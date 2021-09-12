@@ -1,5 +1,5 @@
 html {
-    font-family: 'Segoe UI';
+    font-family: 'Segoe UI',monospace;
     left: 0;
     top: 0;
     position: fixed;
@@ -24,11 +24,15 @@ html {
     bottom: 0;
     width: 100%;
     text-align: center;
-    font-family: 'Segoe UI';
+    font-family: 'Segoe UI',monospace;
     z-index: 2;
 }
 .icon {
     font-size: 220px;
+    margin: 1px;
+}
+.error {
+    font-size: 180px;
     margin: 1px;
 }
 h1 {
@@ -44,6 +48,7 @@ h3 {
     margin: 0px;
 }
 #map { position: absolute; top: 0; bottom: -50px; left: 0; right: 0; width: 100%; z-index: 1;}
+.title { font-family:'Segoe UI'; font-weight: 700 }
 button {    
     background-color: Transparent;
     background-repeat:no-repeat;
@@ -52,8 +57,32 @@ button {
     overflow: hidden;
     outline:none;
 }
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9); /* Black background with opacity */
+    z-index: 100; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
 @media (max-height: 585px) {
     html {
         font-size: 65%;
     }
 }
+@media (max-height: 508px) {
+    html {
+        font-size: 45%;
+    }
+}
+@media (max-height: 428px) {
+    html {
+        font-size: 35%;
+    }
+}
+

@@ -11,14 +11,21 @@
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
     </head>
     <div id="map"></div>
+    <div id="overlay">
+        <div class="center"><div class="error"><center>
+            <span id="text"><span class="iconify" data-icon="mdi-emoticon-sad-outline"></span></div>
+            <center><h1 style="font-size: 170%; font-weight: bold;">Sorry...</h1></center>
+            <h1 style="font-size: 130%">This app requires geolocation.</h1>
+        </center></div></div>
+    </div>
     <body>
         <div class="center"><center>
             <span id="info"></span>
             <div class="icon"><span id="mainIcon"><span class="iconify" data-icon="mdi-help-circle-outline"></span></span></div>
-            <h1><span id="loc"></span></h1>
-            <h1><span id="wStatus"></span></h1>
-            <h2><span class="iconify" data-icon="mdi-chevron-down"></span><span id="mintemp"></span> · <span id="temp"></span> · <span id="maxtemp"></span><span class="iconify" data-icon="mdi-chevron-up"></span></h2>
-            <h3><span class="iconify" data-icon="mdi-water-percent"></span> <span id="humidity"></span>% · <span class="iconify" data-icon="mdi-weather-windy"></span> <span id="windspeed"></span> km/h</h2>
+            <h1 class="title"><span id="loc">Unknown</span></h1>
+            <h1 class="title"><span id="wStatus">Unknown</span></h1>
+            <h2><span class="iconify" data-icon="mdi-chevron-down"></span><span id="mintemp">0°C</span> · <span id="temp">0°C</span> · <span id="maxtemp">0°C</span><span class="iconify" data-icon="mdi-chevron-up"></span></h2>
+            <h3><span class="iconify" data-icon="mdi-water-percent"></span> <span id="humidity">0</span>% · <span class="iconify" data-icon="mdi-weather-windy"></span> <span id="windspeed">0.00</span> km/h</h2>
         </center></div>
         <div class ="footer">
             <button type="button" onclick="applyTheme();"><span id="themeicon"></span></button> <button type="button" onclick="toggleMetric();"><span id="metricicon"></span></button> 
