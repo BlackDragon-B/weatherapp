@@ -1,12 +1,16 @@
 // Load npm modules and other stuff
-var express = require('express');
-const ejs = require('ejs');
-var pjson = require('./package.json');
-const cors = require('cors')
-const fetch = require('node-fetch');
-require('dotenv').config()
+import express from 'express';
+import ejs from 'ejs';
+import pjson from './package.json';
+import cors from 'cors';
+import fetch from 'node-fetch';
+import dotenv from 'dotenv';
+dotenv.config();
 
-// Init Express
+import path from 'path'; // these lines should resolve the ES __dirname error
+const __dirname = path.resolve(); // ^^
+
+// Initiate Express
 var app = express();
 app.use(express.static(__dirname + "/views"));
 app.use(express.urlencoded({extended: true})); 
